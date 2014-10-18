@@ -1,0 +1,10 @@
+# set the correct runtime
+runtime: ruby21
+
+#Run cucumber selenium tests with chrome
+test: |
+  if [[ ! -n "${ROCK_ARG1}" ]]; then
+    die "Usage: rock test SITE [TAG]"
+  fi
+
+  SITE="${ROCK_ARG1}" exec rspec --color "${ROCK_ARG2}"
