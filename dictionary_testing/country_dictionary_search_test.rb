@@ -17,7 +17,7 @@ describe 'Dictionary search test based on country code' do
 		@test_data =  ["一关", "一关市", "一宮", "一宮市", "丁卡文"]  
 		@total_pass = 0
 		@total_fail = 0 
-		puts "Running test using #{@language} language".colorize(:blue)
+		puts "Running test in #{Browser::SITE} using #{@language} language".colorize(:blue)
 	end
 
 	after :each do
