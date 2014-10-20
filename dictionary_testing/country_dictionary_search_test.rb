@@ -4,16 +4,25 @@
 require 'csv'
 require 'rspec'
 require 'pry'
+require 'colorize'
+
 
 Dir["./lib/*"].each {|file| require file }
-
 
 describe 'Dictionary search test based on country code' do
 	before :all do
 		@browser = Browser.new 
 		@search = Search.new @browser
-		@language ||= "cs/"
-		@test_data = ["abcházština", "acehština", "ačinsk", "adygejština", "afarština", "afghánistán", "afrika"]
+		@language ||= "zh/"
+		@test_data =  ["一关", "一关市", "一宮", "一宮市", "丁卡文"]  
+		@total_pass = 0
+		@total_fail = 0 
+		puts "Running test using #{@language} language".colorize(:blue)
+	end
+
+	after :each do
+		puts "Total pass = #{@total_pass}".colorize(:green)
+		puts "Total fail = #{@total_fail}".colorize(:red)
 	end
 
 	after :all do
@@ -29,9 +38,12 @@ describe 'Dictionary search test based on country code' do
 				@browser.visit ("#{@language}"+ "cat.mhtml?searchterm=#{search_term}")
 				if expect(@search.grid_cell).to be 
 					puts "Search term #{data} - PASSED" 
+					@total_pass += 1
 				end 
 			rescue Exception 
 				puts "Did not return search results for #{data}"
+			ensure	
+				@total_fail += 1
 			end
   		end
   	end
