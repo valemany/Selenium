@@ -60,6 +60,7 @@ describe 'Dictionary search test based on country code' do
 				puts "Did not return search results for #{row[0]}"
 			end
   		end
+  	end
 
   	it 'Verifies search results for de language', :de do 
 		CSV.foreach(File.expand_path("test_data_de.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
