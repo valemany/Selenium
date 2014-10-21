@@ -12,6 +12,7 @@ Dir["./lib/*"].each {|file| require file }
 
 describe 'Dictionary search test based on country code' do
 	before :all do
+		puts "Running test in #{Browser::SITE} using #{@language} language".colorize(:blue)
 		@browser = Browser.new 
 		@search = Search.new @browser
 	end
@@ -30,7 +31,6 @@ describe 'Dictionary search test based on country code' do
 	end
 
 	it 'Verifies search results for cs language', :cs do 
-		puts "Running test in #{Browser::SITE} using #{@language} language".colorize(:blue)
 		CSV.foreach(File.expand_path("test_data_cs.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
 			begin
 				@language = 'cs/'
@@ -66,6 +66,201 @@ describe 'Dictionary search test based on country code' do
 		CSV.foreach(File.expand_path("test_data_de.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
 			begin
 				@language = 'de/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+
+  	it 'Verifies search results for fi language', :fi do 
+		CSV.foreach(File.expand_path("test_data_fi.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'fi/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for hu language', :hu do 
+		CSV.foreach(File.expand_path("test_data_hu.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'hu/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for it language', :it do 
+		CSV.foreach(File.expand_path("test_data_it.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'it/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for ja language', :ja do 
+		CSV.foreach(File.expand_path("test_data_ja.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'ja/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for nb language', :nb do 
+		CSV.foreach(File.expand_path("test_data_nb.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'nb/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for nl language', :nl do 
+		CSV.foreach(File.expand_path("test_data_nl.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'nl/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for pl language', :pl do 
+		CSV.foreach(File.expand_path("test_data_pl.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'pl/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for ru language', :ru do 
+		CSV.foreach(File.expand_path("test_data_ru.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'ru/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+
+  	it 'Verifies search results for sv language', :sv do 
+		CSV.foreach(File.expand_path("test_data_sv.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'sv/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for th language', :th do 
+		CSV.foreach(File.expand_path("test_data_th.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'th/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+
+  	it 'Verifies search results for tr language', :tr do 
+		CSV.foreach(File.expand_path("test_data_tr.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'tr/'
+				search_term = CGI.escape(row[0].to_s)
+				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
+				if expect(@search.grid_cell).to be 
+					puts "Search term #{row[0]} - PASSED" 
+					@total_pass += 1
+				end 
+			rescue Exception 
+				puts "Did not return search results for #{row[0]}"
+			end
+  		end	
+  	end
+
+  	it 'Verifies search results for zh language', :zh do 
+		CSV.foreach(File.expand_path("test_data_zh.csv"),encoding: "UTF-8", headers:true, col_sep:",") do |row|
+			begin
+				@language = 'zh/'
 				search_term = CGI.escape(row[0].to_s)
 				@browser.visit (@language + "cat.mhtml?searchterm=#{search_term}")
 				if expect(@search.grid_cell).to be 
