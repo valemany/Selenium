@@ -27,7 +27,7 @@ describe 'Dictionary search test based on country code' do
 	after :each do
 		puts "##{@total_searches} total searches were performed!".colorize(:green)
 		puts "##{@total_fail} searches returned no results".colorize(:red)
-		puts "##{@total_pass} search terms returned results using #{@language} language from (#{Browser::SITE})".colorize(:green)
+		puts "##{@total_pass} search terms returned results using #{@LANGUAGE} language from (#{Browser::SITE})".colorize(:green)
 	end
 
 	after :all do
