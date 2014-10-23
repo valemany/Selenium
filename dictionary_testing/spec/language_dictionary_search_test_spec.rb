@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# This script grabs search terms from a csv/excel file and tests if there are search results for those. 
+# This script grabs search terms from a csv/excel file and tests if there are search 
+#results for those using different languages. 
 
 require_relative 'spec_helper'
 
