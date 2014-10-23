@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'selenium-webdriver'
 require 'csv'
 require 'rspec'
 require 'pry'
 require 'colorize'
+require_relative '../lib/browser'
 
 RSpec.configure do |config|
 	config.run_all_when_everything_filtered = true
