@@ -16,19 +16,11 @@ class Browser
 	end
 
 	def querySelector(selector)
-		begin
-			ele = @driver.find_element :css => selector
-		rescue
-			ele = nil
-		end
+		@driver.find_element :css => selector
 	end
 
 	def querySelectorAll(selector)
-		begin
-			@driver.find_elements :css => selector
-		rescue
-			ele = nil
-		end
+		@driver.find_elements :css => selector
 	end
 
 	def wait(timeout=10)

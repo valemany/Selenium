@@ -34,11 +34,11 @@ describe 'Dictionary search test based on country code' do
 				@total_searches += 1
 				search_term = CGI.escape(row[0].to_s)
 				@browser.visit (language + "/cat.mhtml?searchterm=#{search_term}")
-				if expect(@search.grid_cell).to be 
+				if @search.grid_cell.displayed?
 					puts "Search term #{row[0]} - PASSED" 
 					@total_pass += 1
-				end 
-				rescue Exception
+				end
+				rescue Selenium::WebDriver::Error::NoSuchElementError
 					@total_fail += 1 
 					puts "Did not return search results for #{row[0]}".colorize(:yellow)
 				end
@@ -55,11 +55,11 @@ describe 'Dictionary search test based on country code' do
 						@total_searches += 1
 						search_term = CGI.escape(row[0].to_s)
 						@browser.visit (lang + "/cat.mhtml?searchterm=#{search_term}")
-						if expect(@search.grid_cell).to be 
+						if @search.grid_cell.displayed?
 							puts "Search term #{row[0]} - PASSED" 
 							@total_pass += 1
 						end 
-					rescue Exception
+					rescue Selenium::WebDriver::Error::NoSuchElementError
 						@total_fail += 1 
 						puts "Did not return search results for #{row[0]}".colorize(:yellow)
 					end
