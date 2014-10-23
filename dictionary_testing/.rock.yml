@@ -1,10 +1,16 @@
 # set the correct runtime
 runtime: ruby21
 
+
+usage: |
+  echo "To run tests for specific language: rock test www.qa.shutterstock.com @<language_code>"
+  echo "To run tests for all languages: rock test www.qa.shutterstock.com @all"
+
 test: |
   if [[ ! -n "${ROCK_ARG1}" ]]  || [[ ! -n "${ROCK_ARG2}" ]]; then
     die "Usage: rock test SITE TAG"
+    echo "Example: rock test www.qa.shutterstock.com @en"
   fi
-
+  
 
   LANGUAGE="${ROCK_ARG2}" SITE="${ROCK_ARG1}" exec rspec --tag "${ROCK_ARG2}"
