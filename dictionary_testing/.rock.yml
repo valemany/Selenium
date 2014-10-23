@@ -3,8 +3,8 @@ runtime: ruby21
 
 #Run cucumber selenium tests with chrome
 test: |
-  if [[ ! -n "${ROCK_ARG1}" ]]; then
-    die "Usage: rock test SITE [TAG]"
+  if [[ ! -n "${ROCK_ARG1}" ]]  || [[ ! -n "${ROCK_ARG2}" ]]; then
+    die "Usage: rock test SITE TAG"
   fi
 
 
